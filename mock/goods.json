@@ -1,0 +1,36 @@
+{
+    "status": "0",
+    "msg":"",
+    "result":[
+        {
+            "productId" : "100001",
+            "productName": "小米6",
+            "productPrice": "2999",
+            "productImg": "1.jpg"
+        },
+        {
+            "productId" : "100001",
+            "productName": "音响",
+            "productPrice": "2999",
+            "productImg": "2.jpg"
+        },
+        {
+            "productId" : "100001",
+            "productName": "xxxx",
+            "productPrice": "2999",
+            "productImg": "3.jpg"
+        },
+        {
+            "productId" : "100001",
+            "productName": "yyyy",
+            "productPrice": "345",
+            "productImg": "4.jpg"
+        },
+        {
+            "productId" : "100001",
+            "productName": "小米8",
+            "productPrice": "122",
+            "productImg": "5.jpg"
+        }
+    ]
+}
