@@ -96,7 +96,7 @@
                     <div class="cart-tab-5">
                     <div class="cart-item-opration">
                         <a href="javascript:;" class="item-edit-btn">
-                        <svg class="icon icon-del">
+                        <svg class="icon icon-del" @click="delBtn(item.productId)">
                             <use xlink:href="#icon-del"></use>
                         </svg>
                         </a>
@@ -130,6 +130,16 @@
             </div>
         </div>
         </div>
+        <model :mdShow="mdShowCart" @close="closeModal">
+            <p slot="msg">
+                <span>是否要删除商品？</span>
+            </p>
+            <div slot="btn-group">
+                <a href="javascript:;" class="btn btn--m" @click="delCart">删除</a>
+                <a href="javascript:;" class="btn btn--m" @click="mdShowCart=false">关闭</a>
+                 
+            </div>
+        </model>
         <footer-nav></footer-nav>
     </div>
 </template>
@@ -147,7 +157,8 @@ export default {
   data() {
     return {
       msg: "helloFSFSFSF vue",
-      cartList: []
+      cartList: [],
+      mdShowCart:false
     };
   },
   mounted() {
@@ -161,8 +172,27 @@ export default {
           this.cartList = res.result;
         }
       });
+    },
+    delCart(){
+        axios.post('users/delCart',{
+            productId:this.productId
+        }).then(response => {
+            let res = response.data
+            if(res.status === '0'){
+                this.mdShowCart=false
+                this.getCartList()
+            }
+        })
+    },
+    delBtn(productId){
+        this.mdShowCart=true
+        this.productId = productId
+    },
+    closeModal(){
+        this.mdShowCart=false
     }
   },
+  
   components: {
     HeaderNav,
     FooterNav,
